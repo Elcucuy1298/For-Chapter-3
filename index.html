@@ -63,7 +63,7 @@
             <label for="contact">Contact Number:</label>
             <input type="text" id="contact" name="contact" required>
 
-            <input type="submit" value="Submit" onclick="showImage(); return false;">
+            <input type="submit" value="Submit" onclick="validateId(); return false;">
         </form>
 
         <!-- Output image -->
@@ -71,12 +71,24 @@
     </div>
 
     <script>
+        function validateId() {
+            var id = document.getElementById("id").value;
+
+            // Check if the ID starts with "TUPC"
+            if (!id.startsWith("TUPC")) {
+                alert("Invalid user ID. User ID must start with 'TUPC'.");
+                return false;
+            }
+
+            // If ID is valid, proceed to show image
+            showImage();
+        }
+
         function showImage() {
             var name = document.getElementById("name").value;
-            var id = document.getElementById("id").value;
             var contact = document.getElementById("contact").value;
 
-            if (name === "" || id === "" || contact === "") {
+            if (name === "" || contact === "") {
                 alert("Please fill out all fields.");
                 return false;
             }
